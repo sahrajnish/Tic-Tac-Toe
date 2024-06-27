@@ -82,8 +82,7 @@ fun Circle() {
     androidx.compose.foundation.Canvas(
         modifier = Modifier
             .size(60.dp)
-            .padding(5.dp),
-
+            .padding(5.dp)
     ) {
         drawCircle(
             color = Aqua,
