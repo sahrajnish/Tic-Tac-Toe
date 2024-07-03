@@ -64,9 +64,21 @@ fun GameScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ){
-            Text(text = "Player 'O': ${state.playerCircleCount}", fontSize = 16.sp)
-            Text(text = "Draw: ${state.drawCount}", fontSize = 16.sp)
-            Text(text = "Player 'X': ${state.playerCrossCount}", fontSize = 16.sp)
+            Text(
+                text = "Player 'O': ${state.playerCircleCount}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "Draw: ${state.drawCount}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "Player 'X': ${state.playerCrossCount}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
 
         Text(
@@ -75,6 +87,12 @@ fun GameScreen(
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Cursive,
             color = BlueCustom
+        )
+
+        Text(
+            text = state.hintText,
+            fontSize = 30.sp,
+            fontStyle = FontStyle.Italic
         )
 
         Box(
@@ -141,33 +159,42 @@ fun GameScreen(
             }
         }
 
-        Row (
+        Button(
             modifier = Modifier
                 .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ){
-            Text(
-                text = state.hintText,
-                fontSize = 24.sp,
-                fontStyle = FontStyle.Italic
-            )
-            Button(
-                onClick = {
-                    viewModel.onAction(
-                        UserActions.PlayAgainButtonClicked
-                    )
-                },
-                shape = RoundedCornerShape(5.dp),
-                elevation = ButtonDefaults.buttonElevation(5.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = BlueCustom,
-                    contentColor = Color.White
+            onClick = {
+                viewModel.onAction(
+                    UserActions.PlayAgainButtonClicked
                 )
-            ) {
-                Text(text = "Play Again", fontSize = 16.sp)
-            }
+            },
+            shape = RoundedCornerShape(5.dp),
+            elevation = ButtonDefaults.buttonElevation(5.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = BlueCustom,
+                contentColor = Color.White
+            )
+        ) {
+            Text(text = "Play Again", fontSize = 16.sp)
         }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth(),
+            onClick = {
+                viewModel.onAction(
+                    UserActions.NewGameButtonClicked
+                )
+            },
+            shape = RoundedCornerShape(5.dp),
+            elevation = ButtonDefaults.buttonElevation(5.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = RedCustom,
+                contentColor = Color.White
+            )
+        ) {
+            Text(text = "New Game", fontSize = 16.sp)
+        }
+
     }
 }
 

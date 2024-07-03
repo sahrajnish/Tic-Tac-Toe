@@ -5,6 +5,7 @@ data class GameState(
     val playerCrossCount: Int = 0,
     val drawCount: Int = 0,
     val hintText: String = "Player 'O' turn",
+    val prevTurn: BoardCellValue = BoardCellValue.NONE,
     val currentTurn: BoardCellValue = BoardCellValue.CIRCLE,
     val victoryTYpe: VictoryTYpe = VictoryTYpe.NONE,
     val hasWon: Boolean = false
